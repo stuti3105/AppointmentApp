@@ -1,21 +1,44 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+// In App.js in a new project
 
-export default function App() {
+import * as React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { Portal } from "react-native-paper";
+
+import HomeScreen from './src/screens/home'
+import BookingScreen from "./src/screens/booking";
+import AppointmentScreen from './src/screens/appointment'
+
+const Stack = createStackNavigator();
+
+function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Portal.Host>
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: "#404040",
+            },
+            headerTintColor: "#fff",
+          }}
+        >
+          <Stack.Screen
+            name="Home"
+            component={HomeScreen}
+          />
+          <Stack.Screen
+            name="Booking"
+            component={BookingScreen}
+          />
+          <Stack.Screen
+            name="Appointments"
+            component={AppointmentScreen}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Portal.Host>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
