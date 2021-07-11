@@ -1,5 +1,5 @@
 import React from "react";
-import { View, TextInput, Text, StyleSheet } from "react-native";
+import { View, TextInput, Text, StyleSheet, ScrollView } from "react-native";
 
 import { Button, Surface, Snackbar, Portal } from "react-native-paper";
 import ModalDropdown from "react-native-modal-dropdown";
@@ -78,7 +78,7 @@ export default class Booking extends ValidationComponent {
 
   render() {
     return (
-      <View style={style["container"]}>
+      <ScrollView style={style["container"]}>
         <Surface style={style["content"]}>
           <View style={style["fieldSet"]}>
             <Banner
@@ -171,7 +171,7 @@ export default class Booking extends ValidationComponent {
             {this.state.snackMessage}
           </Snackbar>
         </Portal>
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -199,7 +199,7 @@ let style = StyleSheet.create({
   button: {
     width: 200,
     alignSelf: "center",
-    marginTop: 50,
+    marginVertical: 50,
     borderRadius: 10,
   },
   selector: {
